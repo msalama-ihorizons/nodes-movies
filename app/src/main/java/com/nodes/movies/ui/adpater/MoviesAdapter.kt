@@ -28,7 +28,6 @@ class MoviesAdapter(context: Context?, listener: OnRecyclerItemClickListener) :
         this.context = context
     }
 
-
     inner class MovieViewHolder(itemView: View, listener: OnRecyclerItemClickListener?) :
         BaseViewHolder<Movie, OnRecyclerItemClickListener>(itemView, listener),
         View.OnClickListener {

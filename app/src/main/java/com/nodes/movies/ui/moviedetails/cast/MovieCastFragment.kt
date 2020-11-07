@@ -52,7 +52,7 @@ class MovieCastFragment: Fragment() {
         moviesDetailsViewModel.movieCastLiveData?.observe(viewLifecycleOwner, Observer {resource ->
 
             when(resource.status) {
-                Status.SUCCESS -> movieCastAdapter.items = resource.data
+                Status.SUCCESS -> movieCastAdapter.submitList(resource.data)
                 Status.LOADING ->  progressBar.visibility = View.VISIBLE
                 Status.COMPLETE ->  progressBar.visibility = View.GONE
             }
