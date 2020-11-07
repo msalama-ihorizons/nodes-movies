@@ -31,7 +31,7 @@ class FavouritesMoviesFragment: MoviesListFragment() {
     override fun handleObservers() {
         favouritesMoviesViewModel.favMoviesListLiveData.observe(viewLifecycleOwner, Observer { resources ->
             when (resources.status) {
-                Status.SUCCESS -> moviesAdapter.items = resources.data
+                Status.SUCCESS -> moviesAdapter.submitList(resources.data)
                 Status.ERROR ->  Sneaker.with(this)
                     .setTitle("Error")
                     .setMessage(resources.message?: "UnKnow Error")

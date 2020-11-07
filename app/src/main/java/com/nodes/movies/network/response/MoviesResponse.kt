@@ -18,4 +18,27 @@ data class Movie(
     @SerializedName("backdrop_path") val backdropPath: String?,
     @SerializedName("overview") val overview: String,
     @SerializedName("genres") val genres: List<Genre>
-)
+) {
+    override fun equals(other: Any?): Boolean {
+        if (javaClass != other?.javaClass) {
+            return false
+        }
+
+        other as Movie
+
+        if (id != other.id) {
+            return false
+        }
+        if (title != other.title) {
+            return false
+        }
+        if (releaseDate != other.releaseDate) {
+            return false
+        }
+        if (voteAverage != other.voteAverage) {
+            return false
+        }
+
+        return true
+    }
+}

@@ -95,7 +95,7 @@ open class SearchMoviesFragment : MoviesListFragment() {
 
     override fun handleObservers() {
         searchMoviesViewModel.allResultsLiveData.observe(viewLifecycleOwner, Observer {
-            moviesAdapter.items = it
+            moviesAdapter.submitList(it)
         })
 
         searchMoviesViewModel.searchMoviesListLiveData.observe(

@@ -26,7 +26,7 @@ class SimilarMoviesFragment: MoviesListFragment()  {
     override fun handleObservers() {
         moviesDetailsViewModel.similarMoviesLiveData?.observe(viewLifecycleOwner, Observer { resource->
             when(resource.status) {
-                Status.SUCCESS -> moviesAdapter.items = resource.data
+                Status.SUCCESS -> moviesAdapter.submitList(resource.data)
                 Status.LOADING -> progressBar.visibility = View.VISIBLE
                 Status.COMPLETE -> progressBar.visibility = View.GONE
             }
