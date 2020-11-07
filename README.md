@@ -40,7 +40,7 @@ and also user could check more details about the movie like movie cast and also 
 
 # Prototype Packages 
 
-•	api: it contains movies DB apis and its responses models
+•	network: it contains movies DB apis and its responses models
 
 •	model: contains all model classes.
 
@@ -82,6 +82,7 @@ User could click on rating button to rate the movie.
 ![Alt text](/app/shots/2.jpg?raw=true "")
 ![Alt text](/app/shots/3.jpg?raw=true "")
 ![Alt text](/app/shots/4.jpg?raw=true "")
+
 
 
 
