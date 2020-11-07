@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import javax.inject.Inject
 
 /**
- * Created by Mohamed Salama on 9/5/2020.
+ * Created by Mohamed Salama on 11/6/2020.
  */
 class SessionRepository @Inject constructor(private val sharedPreferences: SharedPreferences) {
 

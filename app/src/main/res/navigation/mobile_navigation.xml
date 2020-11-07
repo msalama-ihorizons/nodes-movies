@@ -8,18 +8,14 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.nodes.movies.ui.search.SearchMoviesFragment"
-        android:label="@string/title_home"
+        android:label="@string/search_title"
         tools:layout="@layout/movies_list_fragment" />
 
     <fragment
         android:id="@+id/navigation_fav"
         android:name="com.nodes.movies.ui.favorites.FavouritesMoviesFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/favorites_title"
         tools:layout="@layout/movies_list_fragment" />
 
-    <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.nodes.movies.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+
 </navigation>

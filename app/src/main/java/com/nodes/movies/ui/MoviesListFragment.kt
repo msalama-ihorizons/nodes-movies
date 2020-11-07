@@ -45,10 +45,7 @@ abstract class MoviesListFragment: Fragment() {
                              moviesAdapter.items[pos].id
                          )
                      )
-
             })
-
-
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

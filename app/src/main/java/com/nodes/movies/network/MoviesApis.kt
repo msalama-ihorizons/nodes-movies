@@ -40,8 +40,8 @@ interface MoviesApis {
 
     @POST("movie/{movie_id}/rating")
     suspend fun rateMovie(
-        @Query("api_key") apiKey: String = API_KEY,
         @Path("movie_id") movieId: Int,
+        @Query("api_key") apiKey: String = API_KEY,
         @Query("guest_session_id") guestSessionId: String,
         @Body rateRequest: RateRequest
 

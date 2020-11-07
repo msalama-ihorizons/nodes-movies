@@ -56,7 +56,7 @@ class MoviesRepository @Inject constructor(
                 emit(Resource.complete(null))
 
                 if (result.isSuccessful)
-                    emit(Resource.success(result.body()?.movies?.sortedBy { it.title }))
+                    emit(Resource.success(result.body()?.movies))
                 else
                     emit(Resource.error(result.message(), null))
 

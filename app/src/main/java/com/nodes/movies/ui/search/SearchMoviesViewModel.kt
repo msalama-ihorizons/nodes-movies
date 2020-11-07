@@ -53,7 +53,7 @@ class SearchMoviesViewModel @ViewModelInject constructor(
     }
 
     fun sortByRating() {
-        allResultsLiveData.value = allResultsList.sortedBy { it.voteAverage }.toMutableList()
+        allResultsLiveData.value = allResultsList.sortedBy { it.title }.toMutableList()
     }
 
     data class SearchLoad(val searchKeyword: String, val pageNumber: Int = 1)

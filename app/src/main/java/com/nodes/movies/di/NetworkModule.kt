@@ -1,6 +1,7 @@
 package com.nodes.movies.di
 
 
+import com.nodes.movies.BuildConfig
 import com.nodes.movies.BuildConfig.API_URL
 import com.nodes.movies.network.MoviesApis
 import dagger.Module
@@ -22,9 +23,21 @@ object NetworkModule {
     @Provides
     fun provideMoviesService(): MoviesApis {
 
+        val interceptor = HttpLoggingInterceptor().apply {
+            level = if (BuildConfig.DEBUG)
+                HttpLoggingInterceptor.Level.BODY
+            else
+                HttpLoggingInterceptor.Level.NONE
+        }
+
+        val client = OkHttpClient.Builder()
+            .addNetworkInterceptor(interceptor)
+            .build()
+
         return Retrofit.Builder()
             .baseUrl(API_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
             .create(MoviesApis::class.java)
     }
