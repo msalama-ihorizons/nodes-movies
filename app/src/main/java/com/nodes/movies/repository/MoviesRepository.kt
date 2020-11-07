@@ -14,24 +14,28 @@ import javax.inject.Inject
 
 class MoviesRepository @Inject constructor(
     private val moviesApis: MoviesApis,
-    private val sessionRepository: SessionRepository,
-    private val moviesDao: MoviesDao
+    private val sessionRepository: SessionRepository
 ) {
 
-    fun loadPlayingNowMovies(): LiveData<Resource<List<Movie>>> {
+
+    fun searchMovies(searchQuery: String, pageNumber: Int): LiveData<Resource<List<Movie>>> {
 
         return liveData {
             emit(Resource.loading(null))
 
             try {
-                val result = moviesApis.getNowPlayingMovies()
+                val result = moviesApis.searchMovies(
+                    searchQuery = searchQuery,
+                    pageNumber = pageNumber
+                )
 
                 emit(Resource.complete(null))
 
-                if (result.isSuccessful)
-                    emit(Resource.success(result.body()?.movies?.sortedBy { it.title }))
-                else
+                if (result.isSuccessful) {
+                    emit(Resource.success(result.body()?.movies))
+                } else {
                     emit(Resource.error(result.message(), null))
+                }
 
             } catch (e: Exception) {
                 emit(Resource.complete(null))
@@ -149,40 +153,4 @@ class MoviesRepository @Inject constructor(
         }
     }
 
-    suspend fun addFavouriteMovie(isFavourite: Boolean, movie: Movie?) {
-
-        if (isFavourite)
-            moviesDao.insert(movie)
-        else
-            moviesDao.deleteMovie(movie?.id)
-    }
-
-    fun isFavouriteMovie(movieId: Int): LiveData<Boolean> {
-
-        val resultLiveData = MediatorLiveData<Boolean>()
-
-        resultLiveData.addSource(moviesDao.loadMovieById(movieId)) { movie ->
-            movie?.let {
-                resultLiveData.value = true
-                return@addSource
-            }
-            resultLiveData.value = false
-
-        }
-
-        return resultLiveData
-    }
-
-    fun loadFavouriteMovies(): LiveData<Resource<List<Movie>>> {
-        val resultLiveData = MediatorLiveData<Resource<List<Movie>>>()
-        resultLiveData.value  = Resource.loading(null)
-
-        resultLiveData.addSource(moviesDao.loadMovies()) {
-            movies->
-            resultLiveData.value = Resource.complete(null)
-
-            resultLiveData.value = Resource.success(movies)
-        }
-        return resultLiveData
-    }
 }

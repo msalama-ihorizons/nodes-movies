@@ -8,9 +8,13 @@ import retrofit2.http.*
 
 interface MoviesApis {
 
-    @GET("movie/now_playing")
-    suspend fun getNowPlayingMovies(
-        @Query("api_key") apiKey: String = API_KEY): Response<MoviesResponse>
+
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("api_key") apiKey: String = API_KEY,
+        @Query("page") pageNumber: Int = 1,
+        @Query("query") searchQuery: String
+    ): Response<MoviesResponse>
 
     @GET("movie/{movie_id}")
     suspend fun getMovieDetails(
