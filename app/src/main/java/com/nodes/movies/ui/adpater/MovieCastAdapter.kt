@@ -1,4 +1,4 @@
-package com.tiendito.bmisrmovies.ui.adpater
+package com.nodes.movies.ui.adpater
 
 import android.content.Context
 import android.view.View
@@ -12,7 +12,7 @@ import com.nodes.movies.network.response.Cast
 import kotlinx.android.synthetic.main.movie_cast_item.view.*
 
 /**
- * Created by Mohamed Salama on 9/5/2020.
+ * Created by Mohamed Salama on 11/6/2020.
  */
 class MovieCastAdapter(context: Context?, listener: OnRecyclerItemClickListener) : GenericRecyclerViewAdapter<Cast, OnRecyclerItemClickListener, MovieCastAdapter.MovieCastViewHolder>(context, listener) {
 

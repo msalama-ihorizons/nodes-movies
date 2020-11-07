@@ -1,4 +1,4 @@
-package com.tiendito.bmisrmovies.api
+package com.nodes.movies.network.request
 
 /**
  * Created by Mohamed Salama on 11/6/2020.

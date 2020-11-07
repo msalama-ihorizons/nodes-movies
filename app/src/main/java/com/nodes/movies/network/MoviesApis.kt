@@ -2,7 +2,7 @@ package com.nodes.movies.network
 
 import com.nodes.movies.BuildConfig.API_KEY
 import com.nodes.movies.network.response.*
-import com.tiendito.bmisrmovies.api.RateRequest
+import com.nodes.movies.network.request.RateRequest
 import retrofit2.Response
 import retrofit2.http.*
 

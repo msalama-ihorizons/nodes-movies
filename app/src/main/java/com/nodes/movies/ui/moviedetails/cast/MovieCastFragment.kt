@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import com.leodroidcoder.genericadapter.OnRecyclerItemClickListener
 import com.nodes.movies.R
 import com.nodes.movies.model.Status
-import com.tiendito.bmisrmovies.ui.adpater.MovieCastAdapter
+import com.nodes.movies.ui.adpater.MovieCastAdapter
 import com.nodes.movies.ui.moviedetails.MovieDetailsViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.movie_cast_fragment.*

@@ -1,15 +1,13 @@
 package com.nodes.movies.repository
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.liveData
-import com.nodes.movies.db.MoviesDao
 import com.nodes.movies.model.Resource
 import com.nodes.movies.network.MoviesApis
+import com.nodes.movies.network.request.RateRequest
 import com.nodes.movies.network.response.Cast
 import com.nodes.movies.network.response.Movie
 import com.nodes.movies.network.response.RateResponse
-import com.tiendito.bmisrmovies.api.*
 import javax.inject.Inject
 
 class MoviesRepository @Inject constructor(
@@ -109,7 +107,7 @@ class MoviesRepository @Inject constructor(
                     emit(Resource.success(result.body()?.cast))
                 else
                     emit(Resource.error(result.message(), null))
-            }catch (e: Exception) {
+            } catch (e: Exception) {
                 emit(Resource.complete(null))
                 emit(Resource.error(e.message, null))
             }
